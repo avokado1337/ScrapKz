@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "rD6H9OAwwzxnVaxsFUfkLXRBg3Gl+cwjBVg/9b7vMYQ+cMoBarKxNPhVVDWjd+Be0r2KIzjt6PaqSnRqAgN3Yw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Sultan\\Desktop\\git\\ScrapKz\\ScrapKz.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Sultan\\.nuget\\packages\\htmlagilitypack\\1.11.24\\htmlagilitypack.1.11.24.nupkg.sha512"
+  ],
+  "logs": []
+}
