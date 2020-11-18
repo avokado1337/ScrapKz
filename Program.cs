@@ -1,10 +1,10 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Net.Http;
 using System.Text;
 using System.Web;
+using System.IO;
+using System.Collections.Generic;
 
 public class Program
 {
@@ -27,20 +27,46 @@ public class Program
 
         var htmlDoc = htmlWeb.Load(url + "/videokarty/filter/almaty-is-v_nalichii-or-ojidaem-or-dostavim/apply/?PAGEN_1=1");
 
-        //Getting product name and title
+        //Getting links of products
 
-        var node = htmlDoc.DocumentNode.SelectNodes("//div[@class='bx-catalog-middle-part']//div[@class='bx_catalog_item_articul']");
+        var node = htmlDoc.DocumentNode.SelectNodes("//div[@class='bx-catalog-middle-part']//div[@class='bx_catalog_item_title']//a[@href]");
+
+        List<string> result1 = new List<string>();
 
         foreach (var ProductsHtmlSeparate in node)
         {
-            Console.WriteLine(ProductsHtmlSeparate.InnerText.Trim('\r', '\n', '\t'));
+            var ItemPage = ((url + ProductsHtmlSeparate.GetAttributeValue("href", null)));
+            List<string> result = ItemPage.Split(new char[] { ',' }).ToList();
+            //This is bad and I don't like how this is done but I haven't found any way to do this better yet.
+            result1.AddRange(result);
 
-            Console.WriteLine();
+
+            //foreach (var ItemInfo in result)
+            //{
+            //    var htmlDocLink = htmlWeb.Load(ItemInfo);
+            //    var ItemNode = htmlDocLink.DocumentNode.SelectNodes("//div[@class='bx-item-container']//ul[@class='bx-short-desc']");
         }
 
-        
+
+        foreach (var itemLink in result1)
+        {
+            var htmlDocLinks = htmlWeb.Load(itemLink);
+
+            var nodeLinks = htmlDocLinks.DocumentNode.SelectNodes("//ul[@class='bx-short-desc']");
+
+            foreach (var linksGPU in nodeLinks)
+            {
+                Console.WriteLine(linksGPU.InnerText.Trim());
+            }
+        }
 
 
+
+
+
+
+
+        /*
         while (Loop == true)
         {
 
@@ -60,9 +86,8 @@ public class Program
 
                 foreach (var ProductsHtmlSeparate in node)
                 {
-                    Console.WriteLine(ProductsHtmlSeparate.InnerText.Trim('\r', '\n', '\t'));
+                    File.AppendAllText(@"C:\Users\Sultan\Desktop\WriteLines.txt", ProductsHtmlSeparate.InnerText.Trim());
 
-                    Console.WriteLine();
                 }
 
             }
@@ -71,7 +96,7 @@ public class Program
                 Loop = false;
             }
         }
-
+        */
 
 
 
