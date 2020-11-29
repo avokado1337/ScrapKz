@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.IO;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 public class Program
 {
@@ -15,7 +16,7 @@ public class Program
         Console.ReadLine();
     }
 
-      static void GetHtml()
+    static void GetHtml()
     {
         Console.OutputEncoding = Encoding.UTF8;
 
@@ -39,25 +40,28 @@ public class Program
             List<string> result = ItemPage.Split(new char[] { ',' }).ToList();
             //This is bad and I don't like how this is done but I haven't found any way to do this better yet.
             result1.AddRange(result);
-
-
-            //foreach (var ItemInfo in result)
-            //{
-            //    var htmlDocLink = htmlWeb.Load(ItemInfo);
-            //    var ItemNode = htmlDocLink.DocumentNode.SelectNodes("//div[@class='bx-item-container']//ul[@class='bx-short-desc']");
         }
 
-        //test
         foreach (var itemLink in result1)
         {
             var htmlDocLinks = htmlWeb.Load(itemLink);
 
-            var nodeLinks = htmlDocLinks.DocumentNode.SelectNodes("//ul[@class='bx-short-desc']");
+            var nodeLinks = htmlDocLinks.DocumentNode.SelectNodes("//ul[@class='bx-short-desc']/li");
+
+            var priceLinks = htmlDocLinks.DocumentNode.SelectNodes("//div[@title='Цена в интернет-магазине']");
+
+
+
 
             foreach (var linksGPU in nodeLinks)
             {
                 Console.WriteLine(linksGPU.InnerText.Trim());
             }
+            foreach (var priceGPU in priceLinks)
+            {
+                Console.WriteLine(priceGPU.InnerText + "\n");
+            }
+
         }
 
 
@@ -66,7 +70,7 @@ public class Program
 
 
 
-        /*
+
         while (Loop == true)
         {
 
@@ -82,23 +86,36 @@ public class Program
 
                 htmlDoc = htmlWeb.Load(link);
 
-                node = htmlDoc.DocumentNode.SelectNodes(("//div[@class='bx-catalog-middle-part']//div[@class='bx_catalog_item_articul']"));
-
-                foreach (var ProductsHtmlSeparate in node)
+                foreach (var itemLink in result1)
                 {
-                    File.AppendAllText(@"C:\Users\Sultan\Desktop\WriteLines.txt", ProductsHtmlSeparate.InnerText.Trim());
+                    var htmlDocLinks = htmlWeb.Load(itemLink);
+
+                    var nodeLinks = htmlDocLinks.DocumentNode.SelectNodes("//ul[@class='bx-short-desc']/li");
+
+                    var priceLinks = htmlDocLinks.DocumentNode.SelectNodes("//div[@title='Цена в интернет-магазине']");
+
+
+
+
+                    foreach (var linksGPU in nodeLinks)
+                    {
+                        Console.WriteLine(linksGPU.InnerText.Trim());
+                    }
+                    foreach (var priceGPU in priceLinks)
+                    {
+                        Console.WriteLine(priceGPU.InnerText + "\n");
+                    }
 
                 }
-
             }
             else
             {
                 Loop = false;
             }
+            }
+
+
+
+
         }
-        */
-
-
-
     }
-}
