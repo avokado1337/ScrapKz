@@ -1174,19 +1174,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sultan\\.nuget\\packages\\": {}
+    "C:\\Users\\Sultan-PC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sultan\\Desktop\\git\\ScrapKz\\ScrapKz.csproj",
+      "projectUniqueName": "E:\\repos\\ScrapKz\\ScrapKz.csproj",
       "projectName": "ScrapKz",
-      "projectPath": "C:\\Users\\Sultan\\Desktop\\git\\ScrapKz\\ScrapKz.csproj",
-      "packagesPath": "C:\\Users\\Sultan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sultan\\Desktop\\git\\ScrapKz\\obj\\",
+      "projectPath": "E:\\repos\\ScrapKz\\ScrapKz.csproj",
+      "packagesPath": "C:\\Users\\Sultan-PC\\.nuget\\packages\\",
+      "outputPath": "E:\\repos\\ScrapKz\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Sultan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Sultan-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1198,6 +1198,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -1209,6 +1210,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "HtmlAgilityPack": {
             "target": "Package",
@@ -1238,7 +1240,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
